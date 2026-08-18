@@ -1,1 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090909">
+<title>UMBRAL · FARO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#d1a24f;--gold-soft:#efc879;--text:#f6f2ea;--muted:#b9b4ac;--green:#1ed760;--line:rgba(255,255,255,.08)}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);background:#080808;font-family:Inter,system-ui,sans-serif}
+.page{width:min(100%,760px);margin:0 auto;padding:0 16px 44px}
+.hero{position:relative;min-height:90vh;display:flex;align-items:flex-end;overflow:hidden;border-radius:0 0 28px 28px;background:
+linear-gradient(180deg,rgba(4,4,5,.18),rgba(4,4,5,.55) 52%,rgba(5,5,6,.95) 100%),
+url("assets/img-01-2efad026eb.jpg") center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 68% 18%,rgba(118,102,255,.3),transparent 30%),radial-gradient(circle at 24% 12%,rgba(229,177,77,.18),transparent 25%);pointer-events:none}
+.hero-content{position:relative;z-index:2;width:min(100%,760px);margin:0 auto;padding:24px 28px 30px}
+.hero-top{position:relative;display:flex;justify-content:flex-start;align-items:flex-start;margin:0 0 34px 0;z-index:4}
+.hero-logo{width:min(62vw,320px);height:auto;display:block;object-fit:contain;filter:drop-shadow(0 10px 26px rgba(0,0,0,.6));margin:0}
+.album-thumb{width:86px;aspect-ratio:1;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.18);box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.album-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.eyebrow{font-size:.77rem;letter-spacing:.24em;color:var(--gold-soft);font-weight:800;margin:0 0 7px}
+.title{margin:0;font-family:"Bebas Neue",sans-serif;font-size:5.7rem;letter-spacing:.05em;line-height:.86}
+.subtitle{font-size:1.02rem;line-height:1.55;color:#f4ecdf;max-width:35rem;margin:14px 0 0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 0}
+.chip{border:1px solid rgba(209,162,79,.48);background:rgba(8,8,8,.45);border-radius:999px;padding:8px 12px;font-size:.86rem}
+.cta-wrap{display:grid;gap:10px;margin-top:20px}
+.cta{text-decoration:none;border-radius:16px;padding:15px 18px;font-weight:800;text-align:center;min-height:58px;width:100%;display:flex;align-items:center;justify-content:center}
+.cta-primary{background:#1DB954;color:#07140b} .cta-secondary{color:#fff;border:0}.cta-youtube{background:#FF0000}.cta-instagram{background:linear-gradient(135deg,#833AB4 0%,#FD1D1D 52%,#FCAF45 100%)}
+.section{margin-top:22px;border:1px solid var(--line);background:linear-gradient(180deg,#121214,#0c0c0d);border-radius:22px;overflow:hidden}
+.section-inner{padding:20px}
+.section-title{margin:0 0 8px;font-family:"Bebas Neue",sans-serif;font-size:2.35rem;letter-spacing:.04em}
+.section-text{color:var(--muted);margin:0;line-height:1.65}
+.about-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.cover-card{padding:12px;border:1px solid rgba(255,255,255,.08);border-radius:20px;background:rgba(255,255,255,.02)}
+.cover-card img{width:100%;display:block;border-radius:16px}
+.faro-phrase{font-size:1.28rem;line-height:1.65;color:#f6ebd5;margin:2px 0 0}
+.faro-phrase strong{color:var(--gold-soft)}
+.songs{display:grid;gap:10px;margin-top:15px}
+.song{width:100%;border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg,#171719,#101012);color:#fff;border-radius:18px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left;font:inherit}
+.song.available{border-color:rgba(209,162,79,.34)} .song.pending{opacity:.68}
+.song-left{display:flex;align-items:center;gap:14px} .song-number{font-family:"Bebas Neue";font-size:1.45rem;color:var(--gold-soft);min-width:32px;text-align:center}
+.song strong{display:block;font-size:1rem;line-height:1.3;margin-bottom:3px} .song small{display:block;font-size:.78rem;color:var(--muted)} .song-action{font-size:.84rem;color:var(--gold-soft);font-weight:700}
+.gallery-title{padding:20px 20px 10px}
+.gallery-track{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;padding:0 20px 20px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.shot{margin:0;scroll-snap-align:start;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.06);min-height:290px;background:#0b0b0b}
+.shot img{width:100%;height:100%;min-height:290px;object-fit:cover;display:block}
+footer{text-align:center;color:#77726b;padding:30px 0 8px;font-size:.84rem}
+dialog{width:min(94vw,760px);max-height:90vh;padding:0;border-radius:24px;border:1px solid rgba(209,162,79,.36);background:#0e0e10;color:#fff}
+dialog::backdrop{background:rgba(0,0,0,.84);backdrop-filter:blur(4px)}
+.dialog-head{position:sticky;top:0;z-index:3;display:flex;justify-content:space-between;gap:14px;align-items:center;padding:17px 18px;border-bottom:1px solid rgba(255,255,255,.08);background:#111113}
+.dialog-head h3{margin:0;font-family:"Bebas Neue";font-size:2rem;color:var(--gold-soft)} .dialog-sub{font-size:.82rem;color:var(--muted);margin-top:4px}
+.close{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:#1a1a1d;color:#fff;font-size:1.3rem}
+.lyrics-wrap{padding:20px} .lyrics-sheet{margin:0;white-space:pre-wrap;font-family:Inter,system-ui,sans-serif;font-size:1.14rem;line-height:1.8;color:#f7f3ea;word-break:normal}
+@media(min-width:640px){.cta-wrap{grid-template-columns:1.3fr 1fr 1fr}.about-grid{grid-template-columns:240px 1fr;align-items:center}.gallery-track{grid-auto-columns:46%}.hero-content{padding:30px}.album-thumb{width:108px}.title{font-size:6.4rem}}
 
+.song.faro-track{border-color:rgba(241,200,121,.82);background:linear-gradient(90deg,rgba(209,162,79,.20),rgba(20,20,22,.98) 40%);box-shadow:inset 4px 0 0 var(--gold),0 0 0 1px rgba(209,162,79,.08)}
+.faro-badge{display:inline-block;vertical-align:middle;margin-left:7px;padding:3px 7px;border-radius:999px;background:var(--gold);color:#16110a;font-size:.62rem;letter-spacing:.12em;font-family:Inter,system-ui,sans-serif;font-weight:800}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-content">
+    <div class="hero-top logo-only">
+      <img class="hero-logo" src="assets/img-02-b9abb9c3a2.png" alt="Umbral">
+    </div>
+    <p class="eyebrow">PRESENTACIÓN OFICIAL DEL DISCO</p>
+    <h1 class="title">FARO</h1>
+    <p class="subtitle">Las canciones de esta noche, para leer mientras suenan y volver a escuchar después.</p>
+    <div class="chips"><span class="chip">Sábado 22 Agosto</span><span class="chip">Brothers</span><span class="chip">21:30 hs</span></div>
+    <div class="cta-wrap">
+      <a class="cta cta-primary" href="https://open.spotify.com/artist/5DxY1mqVkQAVwPCqnoBBWJ?si=1y16rmGER12wyVkcBwugjA&utm_source=whatsapp&sci=spotify%3Acard-config%3A1KUK9xynM4U5VuuZtp7NVW" target="_blank" rel="noopener">▶ Spotify</a>
+      <a class="cta cta-secondary cta-youtube" href="https://youtube.com/@umbraldetandil?si=1wUEWDBTv_Vij0dE" target="_blank" rel="noopener">YouTube</a>
+      <a class="cta cta-secondary cta-instagram" href="https://www.instagram.com/umbraltandil?igsh=bWJyZmtsdzc1OG91" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="section">
+    <div class="section-inner about-grid">
+      <div class="cover-card"><img src="assets/img-03-40376d8d9f.jpg" alt="Portada FARO"></div>
+      <div><p class="faro-phrase"><strong>FARO de un nuevo comienzo:</strong> mirar hacia adelante, encontrar nuestra propia luz y seguir haciendo camino.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Lista del show</h2>
+      <div class="songs"><button class="song available" data-title="Sobrevolar las Alturas">
+<div class="song-left"><span class="song-number">01</span><div><strong>Sobrevolar las Alturas </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Lágrima">
+<div class="song-left"><span class="song-number">02</span><div><strong>Lágrima </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Sin paz no habrá verdad">
+<div class="song-left"><span class="song-number">03</span><div><strong>Sin paz no habrá verdad </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Todo en un color">
+<div class="song-left"><span class="song-number">04</span><div><strong>Todo en un color </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available faro-track" data-title="Sintiendo el viento">
+<div class="song-left"><span class="song-number">05</span><div><strong>Sintiendo el viento <span class="faro-badge">FARO</span></strong><small>Disco FARO · Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available faro-track" data-title="Estrellas">
+<div class="song-left"><span class="song-number">06</span><div><strong>Estrellas <span class="faro-badge">FARO</span></strong><small>Disco FARO · Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available faro-track" data-title="Ser que por dentro sonríes">
+<div class="song-left"><span class="song-number">07</span><div><strong>Ser que por dentro sonríes <span class="faro-badge">FARO</span></strong><small>Disco FARO · Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available faro-track" data-title="Sos mi paz">
+<div class="song-left"><span class="song-number">08</span><div><strong>Sos mi paz <span class="faro-badge">FARO</span></strong><small>Disco FARO · Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Conversaciones">
+<div class="song-left"><span class="song-number">09</span><div><strong>Conversaciones </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Sed de Movimiento">
+<div class="song-left"><span class="song-number">10</span><div><strong>Sed de Movimiento </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Ser Sal">
+<div class="song-left"><span class="song-number">11</span><div><strong>Ser Sal </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Tiempo Atrás">
+<div class="song-left"><span class="song-number">12</span><div><strong>Tiempo Atrás </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button><button class="song available" data-title="Decisión">
+<div class="song-left"><span class="song-number">13</span><div><strong>Decisión </strong><small>Letra disponible</small></div></div><span class="song-action">Abrir</span></button></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="gallery-title"><h2 class="section-title">Galería Umbral</h2></div>
+    <div class="gallery-track"><figure class="shot"><img src="assets/img-04-69374a21f9.jpg" alt="Umbral en vivo"></figure><figure class="shot"><img src="assets/img-05-f095fd1422.jpg" alt="Umbral en vivo"></figure><figure class="shot"><img src="assets/img-06-19719d95fc.jpg" alt="Umbral en vivo"></figure><figure class="shot"><img src="assets/img-07-df1e1604f4.jpg" alt="Umbral en vivo"></figure><figure class="shot"><img src="assets/img-08-6f973ddd1b.jpg" alt="Umbral en vivo"></figure><figure class="shot"><img src="assets/img-09-b06320a2ca.jpg" alt="Umbral en vivo"></figure></div>
+  </section>
+
+  <footer>UMBRAL · FARO · Tandil · 2026</footer>
+</main>
+
+<dialog id="lyricsDialog">
+  <div class="dialog-head">
+    <div><h3 id="lyricsTitle"></h3><div class="dialog-sub">Letra · Umbral · Faro</div></div>
+    <button class="close" id="closeDialog" aria-label="Cerrar">×</button>
+  </div>
+  <div class="lyrics-wrap"><pre class="lyrics-sheet" id="lyricsBody"></pre></div>
+</dialog>
+
+<script>
+const LYRICS = {"Sobrevolar las Alturas": "Sobrevolar las alturas la quietud\nDebajo una colección hojas color\nHumedad convida un árbol\nPerfección\n\nFlotar surfear una brisa es el colchón\nMascar nube es existir, tierno algodón\nDulce tan dulce\nCiencia o ficción\n\nEscucho un llamado\nAlerta y atención\nPasé y ya es engaño\nCierre y carbón\nBarro y pisón\nSuyo el perdón\n\nFlotar es el colchón\nMascar tierno algodón\nCiencia o ficción\n\nEscucho un llamado\nAlerta y atención\nPase y ya es engaño\nSuyo el perdón\n\nSe sacude una jaula como rechina por donde voy\nDa ruido extraño, mente casi alucina, ¿hacia dónde voy? con quien? de que estoy hecho?\nAlma, pluma gris, cielo, estrellas, soy\nEl universo que explota en mi interior\nForzá los ojos que adentro hay multicolor\nSi hay pulso también hay imaginación\nÁtame de alas seguí, que estoy mejor\nRecuerdo en mi qué es vivir, más que ilusión\n\nCierre y carbón\nBarro y pisón\nSuyo el perdón", "Lágrima": "Tu me acompañas\ndesde el silencio si no tienes que hablar\nllenas espacios cuando me has de faltar\nCompartes sientes como yo\n\nTe doy dos páginas\nuna escrita con palabras de más\nla otra en blanco, vos sabrás completar\nCompartes sientes como yo\n\nSi al andar, dejas algo para alivianar\nla carga, que cuelga\n\nSer dos estrellas\ndesear ser lunas que reflejen su par\nsin eclipsarse sólo cuidar y amar\nCompartir sentir\n\nSer dos lombrices\nentrelazadas descubriendo el lugar\ntan ocupadas de entregar y abonar\nCompartir sentir\n\nSi buscas peces en altamar,\nsi al andar dejas algo para alivianar\nla carga que cuelga, sueña\n\nTe acompañaré\ndesde el encuentro, del placer de vivir\ncon la nostalgia y lo que está por venir\nComparto y siento como vos\n\nDame una lágrima, yo la cuido y la hago crecer\nla abrigo y todo vuelve a florecer\ncomparto y siento como vos\n\nSi buscas peces en altamar,\nsi al andar dejas algo para alivianar\nla carga que cuelga, sueña", "Sin paz no habrá verdad": "Si el sol estallara\nSi vida hay algo más que hacer\nEs tiempo perdido\nSin buscar camino, decir\n\nSi llegara el Final\nSin paz no habrá verdad, Piedad\nVerdugo el destino\nVestida de lino decirte\n\nCada día que pasa es uno más\nNos detiene el cielo, la tormenta\nAtrapado el humo en la ciudad\nEl pasado vivo que se aleja\n\nEl filo, el despertar\nEl shock de imaginar, pintar\nPresentes distintos\nBuscar en tus ojos, decirte\n\nCada día que pasa es uno más\nNos detiene el cielo, la tormenta\nAtrapado el humo en la ciudad\nEl pasado vivo que se aleja", "Todo en un color": "Todo el día esmerandote\nBien temprano acostumbrándote\nal servicio del todo, ese modo de pertenecer\n\nAcunando esa promoción, siendo el sol de cada estación\nLiberá la parada, esa es la sensación\n\nSi al final todos van a cambiar de canal\nlas plegarias se van a olvidar\n\nCada vez que te imagines,\nCortar cinta sin ningún despues\nSal afuera, respira, veras que mala vida\n\nSi al final todos van a cambiar de canal\nSí, yo te di un lugar, una eternidad,\nUna compresión, todo en un color.\n\nCada vez que te imagines,\nCortar cinta sin ningún despues\nSal afuera, respira, veras que mala vida", "Sintiendo el viento": "Voy\nSintiendo el viento\nMi vida en lo mejor\nAgradezco\n\nHoy\nApuesto y allá voy\nEl pelo suelto\nLo merezco\n\nCada escalón subí\nY me esforcé subiendo\nY tropecé sonriendo\nCada paso que di\nMe definí\n\nUnos trapos y ya estoy\nPorque a lo mejor\nTengo suerte\nLa valija que perdí\nLa dejé en el tren\nDel pasado\n\nCada escalón subí\nY me esforcé subiendo\nY tropecé sonriendo\nCada paso que di\nMe definí", "Estrellas": "Si desde el barro avasallado vas pensando\nque no es tiempo conveniente de salir\n\nSi tenés toda la cabeza encandilada\ny no es tan claro no es tan claro el porvenir\n\nSi de palabras olvidadas se compone,\nmisteriosa la forma de resolver\nLa problemática cruzada, el enigma de la vida\nde un complejo amanecer\n\nPero el sol saldrá igual\nTe alumbrará\nTe sanará\n\nDe la mano a caminar\nTe sacaré\nTe abrazaré\n\nHoy dicen que\nFugaces son\nEstrellas vos\nEstrellas yo", "Ser que por dentro sonríes": "Ser que por dentro sonríes\nSer que suspira y distingue\nLuz de oscuridad\nFuerza y voluntad\n\nCada mañana que el sol\npegue en tu cara, te dibujará\nuna tibia ilusión que tu mirada\npronto alcanzará", "Sos mi paz": "Sos mi paz\nMi lugar\nCielo terrenal\nTu raíz\nMi razón\nSos parte de mi\n\nParte de mi que está, entrelazada a vos\nSi quiero descubrir, irnos los dos.\n\nReflejas sin querer\nLos pasos que doy\nLos de hoy, los de ayer\nEcos de mi ser\n\nYo quise caminar, vos me ofreciste dos\nAlas para volar lejos tu y yo.", "Conversaciones": "Conversaciones con la vida, desafiantes\nserán acciones construidas, nada más\nelegir para crecer\nserá el as el del final\nterminar torciendo el destino\nque rompa en diez mil\n\nConstelaciones diluidas en la mente\nSerá el ingenio el encargado\nel hacer y el deshacer\nel amor y el desamor\npotenciar la ley de mis pasos\nQue vuele en pedazos.\n\nPero si observo y me detengo en lo complejo\n¿ será el azar la sinfonía ?\nla leyenda de cristal\nsi hay que dejarse llevar\nMisterioso verso que inspira, grandeza en la intriga\n\nEs el esfuerzo incalculable, improvisado\nEs el legado del encuentro, bastará bastará bastará", "Sed de Movimiento": "sed de un universo de velocidad\nde andar, de salir a ver\n\nSiento que me elevo\nalgo retrocede lentamente, vuelvo a comenzar\ncargo en mi lugar\n\nNo me acompañes\nsi quieres que me desarme\n\nDesplego mis alas\nsangran plumas blancas\nquiero despegar, ganar altitud\n\nMe pongo de puntas\nmis gemelos tensan, duelen\nme vuelvo a mecer\n\nNo me acompañes\nsi quieres que me desarme", "Ser Sal": "Baila sola en la lluvia\ncomo si no tuviera piel\nresbalaran las palabras\n\nSiente las vibraciones\nde sus pies, llamando otra vez\nplanea un tiro distante\n\nPierde la brújula\nse recuesta en la bruma\n\nComo si no tuviera piel\nComo si no tuviera piel\n\nLa acaricia el rocío\nel pulso indica actividad\ntrabaja y desaparece\n\nPalpitar inminente\ncomo un gato en la oscuridad\ngolpea y no deja huellas\n\nDe gris se esfuma\nse recuesta en la bruma\n\nCálido abrazo con afecto de ayer\nsiento recuperar la energía vital\npero se pierde y vuelve sola al lugar\nmerodea lento, planifica el final.\n\n¿ Quien disfruta la culpa ?\n¿ cómo fue que llegó a ser sal ?\nla tierna niña de entonces\n\nTriste choque de voces\n¿ a quien recuerda en su intimidad ?\nsolo hay persianas, hay tablas.\n\nFalta de luz\nsigue bailando a oscuras\n\nBaila sola en la lluvia\ncomo si no tuvieras piel\nBaila sola en la lluvia\ncomo si no tuvieras piel\nBaila sola en la lluvia", "Tiempo Atrás": "Despertabas tiempo atrás, el mismo lugar de los dos.\nMe mirabas, me acerqué y me diste tú voz.\n\nComenzó aquel tiempo entre inocencia sin pudor,\nEntre jumpers, guardapolvos, entre labios tiesos, recuerdo tu sol.\n\nPero un día se nubló y se puso del sur.\nEl destino nos separó a más de 1000 años luz,\nY un desierto helado, inesperado, apagó,\nLos recuerdos del pasado, de un principio, de un amanecer,\nQue se enredó, que nunca fue, promesas ya lo vez, inocentes balas.\n\nComo hacer para volver, razón de olvidar, del perdón.\nUn frío interno, descanso eterno, meditación.\nParaísos bien vacíos de luz y color\nSon momentos carceleros de mi alma, de mi yo interior.\n\nDespertar, todos tenemos un despertar,\nNos prepara, atropella, va de madurar.\nPero al tiempo que aprendemos iremos por más.\nSerá historia en piel y huesos, Marcaré solo un sendero,\nvida que empieza del reflejo\nDe lo que pasó, aprenderé, son vientos del ayer, que moldean lento.", "Decisión": "Dar vueltas en mi, me marea.\nVolver al lugar, plantear la escena.\n\nConsiderar posibilidades, verdades ocultas, algo me dirán.\nDescubrir que hay detrás de la azar, la aventura infinita.\n\nCiega inmensidad de repente.\nMisterios o más, lo que encuentre.\n\nIr por más, caminar por oscuros pasillos sin lentes, sin adivinar\nque al final de la recta me esperan dos brazos calientes.\n\nEs momento ya, se hace tarde.\nDar un paso atrás no es viable.\n\nPonderar variables urgentes, castigo, influencias, como conclusión\nDisparar, sonar tu canción, decisión.\n\nJuegos, Juegos, Juegos…"};
+const dialog = document.getElementById('lyricsDialog');
+const title = document.getElementById('lyricsTitle');
+const body = document.getElementById('lyricsBody');
+
+document.querySelectorAll('.song.available').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const song = btn.dataset.title;
+    title.textContent = song;
+    body.textContent = LYRICS[song] || '';
+    dialog.showModal();
+
+    // Always show the beginning of the lyric when opening a song.
+    requestAnimationFrame(() => {
+      dialog.scrollTop = 0;
+      body.scrollTop = 0;
+      const lyricsWrap = dialog.querySelector('.lyrics-wrap');
+      if (lyricsWrap) lyricsWrap.scrollTop = 0;
+    });
+  });
+});
+document.getElementById('closeDialog').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', e => {
+  const r = dialog.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
+});
+</script>
+</body></html>
